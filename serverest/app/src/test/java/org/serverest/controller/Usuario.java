@@ -4,6 +4,8 @@ import org.serverest.model.UsuarioDTO;
 import io.restassured.http.ContentType;
 import org.serverest.util.Ambiente;
 import org.serverest.util.Endpoint;
+
+import static io.restassured.RestAssured.when;
 import static org.hamcrest.CoreMatchers.is;
 import static io.restassured.RestAssured.given;
 public class Usuario {
@@ -39,5 +41,13 @@ public class Usuario {
                 .statusCode(statusCode)
                 .body("message", is(message))
                 .extract().path("authorization");
+    }
+
+    public static void listar(Integer statusCode) {
+
+        when()
+                .get(Ambiente.localhost + Endpoint.usuarios)
+        .then()
+                .statusCode(statusCode);
     }
 }
