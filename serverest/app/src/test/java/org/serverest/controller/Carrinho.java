@@ -6,7 +6,7 @@ import org.serverest.util.Endpoint;
 import static org.hamcrest.CoreMatchers.is;
 import static io.restassured.RestAssured.given;
 public class Carrinho {
-    public static void cadastrar(String produtoId, Integer quantidade, String usuarioToken, Integer statusCode, String mensagem) {
+    public static void cadastrar(String produtoId, Integer quantidade, String usuarioToken, Integer statusCode, String mensagem, String ambiente) {
         given()
                 .header("authorization", usuarioToken)
                 .body("{\n" +
@@ -19,17 +19,17 @@ public class Carrinho {
                         "}")
                 .contentType(ContentType.JSON)
         .when()
-                .post(Ambiente.localhost + Endpoint.carrinhos)
+                .post(ambiente.concat(Endpoint.carrinhos))
         .then()
                 .statusCode(statusCode)
                 .body("message", is(mensagem));
     }
 
-    public static void cancelarCompra(String usuarioToken, Integer statusCode, String mensagem) {
+    public static void cancelarCompra(String usuarioToken, Integer statusCode, String mensagem, String ambiente) {
         given()
                 .header("authorization", usuarioToken)
         .when()
-                .delete(Ambiente.localhost + Endpoint.cancelarCompra)
+                .delete(ambiente.concat(Endpoint.cancelarCompra))
         .then()
                 .statusCode(statusCode)
                 .body("message", is(mensagem));
