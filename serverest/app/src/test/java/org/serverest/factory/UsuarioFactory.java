@@ -9,7 +9,7 @@ public class UsuarioFactory {
         UsuarioDTO usuarioDTO = new UsuarioDTO();
         Faker faker = new Faker();
         String nome = faker.name().firstName();
-        String email = nome + "@restassured.com";
+        String email = nome.concat("@restassured.com");
         usuarioDTO.setNome(nome);
         usuarioDTO.setEmail(email);
         usuarioDTO.setPassword("teste");
@@ -21,7 +21,7 @@ public class UsuarioFactory {
         UsuarioDTO usuarioDTO = new UsuarioDTO();
         Faker faker = new Faker();
         String nome = faker.name().firstName();
-        String email = nome + "@restassured.com";
+        String email = nome.concat("@restassured.com");
         usuarioDTO.setNome(nome);
         usuarioDTO.setEmail(email);
         usuarioDTO.setPassword("teste");

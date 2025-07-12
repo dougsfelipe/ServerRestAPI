@@ -5,7 +5,7 @@ import org.serverest.model.ProdutoDTO;
 
 public class ProdutoFactory {
 
-    public static ProdutoDTO criarComQuantidade(int quantidadeInicial) {
+    public static ProdutoDTO criarComQuantidadeInicial(int quantidadeInicial) {
         ProdutoDTO produtoDTO = new ProdutoDTO();
         Faker faker = new Faker();
         String nome = faker.commerce().productName();
