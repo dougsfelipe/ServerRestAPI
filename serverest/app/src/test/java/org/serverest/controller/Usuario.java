@@ -32,6 +32,24 @@ public class Usuario {
         return usuarioId;
     }
 
+    public static String  logar(UsuarioDTO usuarioDTO, Integer statusCode, String mensagem, String ambiente){
+        String authorization = given()
+                .body("{\n" +
+                        "  \"email\": \"" + usuarioDTO.getEmail() + "\",\n" +
+                        "  \"password\": \"" + usuarioDTO.getPassword() + "\"\n" +
+                        "}")
+                .contentType(ContentType.JSON)
+                .when()
+                .post(ambiente.concat(Endpoint.login))
+                .then()
+                .statusCode(statusCode)
+                .body("message", is(mensagem))
+                .extract().path("authorization");
+
+
+        return authorization;
+    }
+
     public static void buscarPorId(String id, UsuarioDTO usuarioDTO, Integer statusCode, String ambiente) {
         given()
                 .pathParam("_id", id)
@@ -46,6 +64,16 @@ public class Usuario {
                 .body("_id", is(usuarioDTO.getId()));
     }
 
+    public static void buscarPorIdExluido(String id, Integer statusCode, String mensagem, String ambiente) {
+        given()
+                .pathParam("_id", id)
+                .when()
+                .get(ambiente.concat(Endpoint.usuariosId))
+                .then()
+                .statusCode(statusCode)
+                .body("message", is(mensagem));
+    }
+
     public static void excluir(String id, Integer statusCode, String mensagem, String ambiente) {
         given()
                 .pathParam("_id", id)
@@ -55,6 +83,8 @@ public class Usuario {
                 .statusCode(statusCode)
                 .body("message", is(mensagem));
     }
+
+
 
     public static String editar(String id, UsuarioDTO usuarioDTO, Integer statusCode, String mensagem, String ambiente) {
         String usuarioId = given()
@@ -83,9 +113,9 @@ public class Usuario {
                         "  \"password\": \"" + usuarioDTO.getPassword() + "\"\n" +
                         "}")
                 .contentType(ContentType.JSON)
-            .when()
+                .when()
                 .post(ambiente.concat(Endpoint.login))
-            .then()
+                .then()
                 .statusCode(statusCode)
                 .body("message", is(message))
                 .extract().path("authorization");

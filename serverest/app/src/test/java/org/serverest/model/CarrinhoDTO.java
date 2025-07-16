@@ -3,16 +3,10 @@ package org.serverest.model;
 public class CarrinhoDTO {
 
     private String id;
-    private String produtoId;
+    private String usuarioId;
+    private ProdutoDTO produto;
     private Integer quantidade;
-
-    public CarrinhoDTO() {
-    }
-
-    public CarrinhoDTO(String produtoId, Integer quantidade) {
-        this.produtoId = produtoId;
-        this.quantidade = quantidade;
-    }
+    private Integer precoTotal;
 
     public String getId() {
         return id;
@@ -22,12 +16,20 @@ public class CarrinhoDTO {
         this.id = id;
     }
 
-    public String getProdutoId() {
-        return produtoId;
+    public String getUsuarioId() {
+        return usuarioId;
     }
 
-    public void setProdutoId(String produtoId) {
-        this.produtoId = produtoId;
+    public void setUsuarioId(String usuarioId) {
+        this.usuarioId = usuarioId;
+    }
+
+    public ProdutoDTO getProduto() {
+        return produto;
+    }
+
+    public void setProduto(ProdutoDTO produto) {
+        this.produto = produto;
     }
 
     public Integer getQuantidade() {
@@ -37,4 +39,20 @@ public class CarrinhoDTO {
     public void setQuantidade(Integer quantidade) {
         this.quantidade = quantidade;
     }
+
+    public Integer getPrecoTotal() {
+        return precoTotal;
+    }
+
+    public void setPrecoTotal(Integer precoTotal) {
+        this.precoTotal = precoTotal;
+    }
+    public CarrinhoDTO(String usuarioId, ProdutoDTO produto, Integer quantidade) {
+        this.usuarioId = usuarioId;
+        this.quantidade = quantidade;
+        this.produto = produto;
+        this.precoTotal = this.quantidade*produto.getPreco();
+    }
+
+
 }

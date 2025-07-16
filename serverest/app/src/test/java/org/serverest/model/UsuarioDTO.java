@@ -8,6 +8,7 @@ public class UsuarioDTO {
     private String password;
     private String administrador;
     private String token;
+    private String authorization;
 
     public UsuarioDTO() {
     }
@@ -17,6 +18,7 @@ public class UsuarioDTO {
         this.email = email;
         this.password = password;
         this.administrador = administrador;
+        this.authorization = null;
     }
 
     public String getId() {
@@ -65,5 +67,13 @@ public class UsuarioDTO {
 
     public void setToken(String token) {
         this.token = token;
+    }
+
+    public String getAuthorization() {
+        return authorization;
+    }
+
+    public void setAuthorization(String authorization) {
+        this.authorization = authorization;
     }
 }
