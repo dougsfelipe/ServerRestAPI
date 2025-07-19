@@ -21,7 +21,7 @@ public class Exercicio01 {
     @Test
     public void validarCadastro() {
 
-        //Pre-condicaoo
+        //Pre-condicao
         UsuarioDTO usuarioDTO = new UsuarioDTO();
         usuarioDTO = UsuarioFactory.criarAdmin();
 

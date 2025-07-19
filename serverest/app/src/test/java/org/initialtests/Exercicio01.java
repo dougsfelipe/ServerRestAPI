@@ -75,7 +75,7 @@ public class Exercicio01 {
                 .body("administrador", is("true"))
                 .body("_id", is(userId));
 
-        //D - Excluir usu�rio
+        //D - Excluir usuario
         given()
                 .pathParam("_id", userId)
                 .when()
