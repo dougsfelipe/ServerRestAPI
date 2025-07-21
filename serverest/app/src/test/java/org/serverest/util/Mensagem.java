@@ -16,4 +16,6 @@ public class Mensagem {
     public static final String carrinhoNaoEncontrado = "Carrinho não encontrado";
     public static final String usuarioNaoEncontrado = "Usuário não encontrado";
     public static final String compraCancelada = "Registro excluído com sucesso. Estoque dos produtos reabastecido";
+    public static final String estoqueReduzido = "Estoque reduzido corretamente após adicionar produto ao carrinho";
+    public static final String estoqueRestaurado = "Estoque restaurado corretamente após cancelar o carrinho";
 }

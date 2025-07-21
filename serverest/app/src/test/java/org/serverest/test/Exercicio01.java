@@ -21,7 +21,7 @@ public class Exercicio01 {
     @Test
     public void validarCadastro() {
 
-        //Pré-condição
+        //Pre-condicao
         UsuarioDTO usuarioDTO = new UsuarioDTO();
         usuarioDTO = UsuarioFactory.criarAdmin();
 
@@ -35,35 +35,35 @@ public class Exercicio01 {
     @Test
     public void validarExclusao() {
 
-        //Pré-condição
+        //Pre-condicao
         UsuarioDTO usuarioDTO = new UsuarioDTO();
         usuarioDTO = UsuarioFactory.criarAdmin();
         usuarioDTO.setId(Usuario.cadastrar(usuarioDTO, HttpStatus.SC_CREATED, Mensagem.cadastroSucesso, ambiente));
 
-        //Validar exclusão de usuário existente
+        //Validar exclusao de usuario existente
         Usuario.excluir(usuarioDTO.getId(), HttpStatus.SC_OK, Mensagem.excluidoSucesso, ambiente);
 
-        //Validar exclusão de usuário inexistente
+        //Validar exclusao de usuario inexistente
         Usuario.excluir(usuarioDTO.getId(), HttpStatus.SC_OK, Mensagem.nenhumRegistroExcluido, ambiente);
     }
 
     @Test
     public void validarEdicao() {
 
-        //Pré-condição
+        //Pre-condicao
         UsuarioDTO usuarioDTO = new UsuarioDTO();
         UsuarioDTO usuario2DTO = new UsuarioDTO();
         usuarioDTO = UsuarioFactory.criarAdmin();
         usuario2DTO = UsuarioFactory.criarAdmin();
         usuarioDTO.setId(Usuario.cadastrar(usuarioDTO, HttpStatus.SC_CREATED, Mensagem.cadastroSucesso, ambiente));
 
-        //Validar edição de usuário existente
+        //Validar edicao de usuario existente
         Usuario.editar(usuarioDTO.getId(), usuarioDTO, HttpStatus.SC_OK, Mensagem.alteradoSucesso, ambiente);
 
-        //Validar edição de usuário inexistente
+        //Validar edicao de usuario inexistente
         Usuario.editar("jogfODIlXsqxNFS5", usuario2DTO, HttpStatus.SC_CREATED, Mensagem.cadastroSucesso, ambiente);
 
-        //Validar edição de usuário com email duplicado
+        //Validar edicao de usuario com email duplicado
         usuarioDTO.setEmail(usuario2DTO.getEmail());
         Usuario.editar(usuarioDTO.getId(), usuarioDTO, HttpStatus.SC_BAD_REQUEST, Mensagem.emailUtilizado, ambiente);
     }
@@ -71,19 +71,19 @@ public class Exercicio01 {
     @Test
     public void validarBuscarPorId() {
 
-        //Pré-condição
+        //Pre-condicao
         UsuarioDTO usuarioDTO = new UsuarioDTO();
         usuarioDTO = UsuarioFactory.criarAdmin();
         usuarioDTO.setId(Usuario.cadastrar(usuarioDTO, HttpStatus.SC_CREATED, Mensagem.cadastroSucesso, ambiente));
 
-        //Validar busca de usuário por id
+        //Validar busca de usuario por id
         Usuario.buscarPorId(usuarioDTO.getId(), usuarioDTO, HttpStatus.SC_OK, ambiente);
     }
 
     @Test
     public void validarListagem() {
 
-        //Validar listagem de usuários
+        //Validar listagem de usuarios
         Usuario.listar(HttpStatus.SC_OK, ambiente);
     }
 }
