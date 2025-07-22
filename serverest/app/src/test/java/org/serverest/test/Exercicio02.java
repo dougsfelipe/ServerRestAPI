@@ -27,7 +27,7 @@ public class Exercicio02 {
 
 
     @Test
-    public void validarCarrinhoDiminui(){
+    public void validarCarrinhoUsuarioDeletada(){
         //Pre-Condicao
         UsuarioDTO usuarioDTO = UsuarioFactory.criarAdmin();
 
@@ -62,7 +62,7 @@ public class Exercicio02 {
     }
 
     @Test
-    public void validarCarrinhoCancelado() {
+    public void validarCarrinhoCompraCancelado() {
         //Pre-Condicao
         UsuarioDTO usuarioDTO = UsuarioFactory.criarAdmin();
 
